@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: morning-service-order
+  cloud:
+    config:
+      uri: http://localhost:8765
+      profile: dev
+
+
+

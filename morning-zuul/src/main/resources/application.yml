@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8764
+spring:
+  application:
+    name: morning-zuul
+zuul:
+  routes:
+    morning-service-order:
+      path: /order/**
+      serviceId: morning-service-order
+    morning-service-product:
+      path: /product/**
+      serviceId: morning-service-product
+
+#日志打印，查看转发细节
+logging:
+  level:
+    com.netflix: DEBUG
+
