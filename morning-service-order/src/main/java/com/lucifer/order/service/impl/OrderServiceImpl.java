@@ -1,8 +1,9 @@
-package com.lucifer.morningserviceorder.service.impl;
+package com.lucifer.order.service.impl;
 
-import com.lucifer.morningserviceorder.dao.OrderMapper;
-import com.lucifer.morningserviceorder.pojo.Order;
-import com.lucifer.morningserviceorder.service.OrderService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.lucifer.order.dao.OrderMapper;
+import com.lucifer.order.pojo.Order;
+import com.lucifer.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> orderQueryAll() {
-        return orderMapper.findAll();
+        QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
+        return orderMapper.selectList(queryWrapper);
     }
 }

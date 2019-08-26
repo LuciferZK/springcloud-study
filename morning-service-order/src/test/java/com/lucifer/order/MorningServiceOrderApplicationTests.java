@@ -1,4 +1,4 @@
-package com.lucifer.morningserviceorder;
+package com.lucifer.order;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

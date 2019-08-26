@@ -1,15 +1,15 @@
-package com.lucifer.morningserviceorder;
+package com.lucifer.order;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
-import javax.persistence.MappedSuperclass;
 
 /**
  * @author Lucifer
  * @description: 订单服务
  */
+@MapperScan(basePackages = "com.lucifer.order.dao")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class MorningServiceOrderApplication {

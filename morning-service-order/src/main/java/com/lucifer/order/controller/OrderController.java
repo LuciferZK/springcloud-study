@@ -1,8 +1,8 @@
-package com.lucifer.morningserviceorder.controller;
+package com.lucifer.order.controller;
 
 import com.lucifer.common.utils.CommonResult;
-import com.lucifer.morningserviceorder.pojo.Order;
-import com.lucifer.morningserviceorder.service.OrderService;
+import com.lucifer.order.pojo.Order;
+import com.lucifer.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,12 +27,15 @@ public class OrderController {
         return CommonResult.success(products);
     }
 
-    @Value(value = "${defaultName}")
-    private String defaultName;
+    /**
+     * 用于测试读取github配置文件属性值
+     */
+    @Value(value = "${env}")
+    private String env;
 
     @GetMapping("test")
     public String test(){
-        return defaultName;
+        return env;
     }
 
 

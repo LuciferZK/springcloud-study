@@ -1,6 +1,6 @@
-package com.lucifer.morningserviceorder.service;
+package com.lucifer.order.service;
 
-import com.lucifer.morningserviceorder.pojo.Order;
+import com.lucifer.order.pojo.Order;
 
 import java.util.List;
 
