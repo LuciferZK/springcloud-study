@@ -10,5 +10,17 @@ spring:
         git:
           uri: https://github.com/LuciferZK/config-repo
           username: 13871278164@163.com
-          password: ------
-          basedir: D:\project\morning-star\config-server\config\basedir
+          password: -----------
+          #basedir: D:\project\morning-star\config-server\config\basedir
+  rabbitmq:
+    host: 192.168.47.131
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
