@@ -19,8 +19,9 @@ public class BusFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) req;
         String requestURI = httpServletRequest.getRequestURI();
-        //过滤掉非/actuator/bus-refresh请求
-        if (!requestURI.endsWith("/actuator/bus-refresh")) {
+        String busReqUrl="actuator/bus-refresh";
+        //过滤掉/actuator/bus-refresh请求
+        if (!requestURI.endsWith(busReqUrl)) {
             filterChain.doFilter(req, res);
             return;
         }
