@@ -1,4 +1,4 @@
-package com.lucifer.morningserviceproduct;
+package com.lucifer.product;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

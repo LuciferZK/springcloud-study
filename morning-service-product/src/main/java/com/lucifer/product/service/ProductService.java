@@ -1,6 +1,6 @@
-package com.lucifer.morningserviceproduct.service;
+package com.lucifer.product.service;
 
-import com.lucifer.morningserviceproduct.pojo.Product;
+import com.lucifer.product.pojo.Product;
 
 import java.util.List;
 

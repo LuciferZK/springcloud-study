@@ -3,7 +3,10 @@ package com.lucifer.order.controller;
 import com.lucifer.common.utils.CommonResult;
 import com.lucifer.order.pojo.Order;
 import com.lucifer.order.service.OrderService;
+import com.lucifer.order.service.TestFeignService;
+import com.lucifer.product.pojo.Product;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,28 +18,29 @@ import java.util.List;
  * @date: 2019/8/26
  * @description:
  */
+@EnableFeignClients(basePackages = "com.lucifer.order")
 @RestController
 public class OrderController {
 
     @Resource
     private OrderService orderService;
 
+    @Resource
+    private TestFeignService testFeignService;
+
     @GetMapping(value = "orderQueryAll")
     public CommonResult<List<Order>> queryAll() {
-        List<Order> products = orderService.orderQueryAll();
-        return CommonResult.success(products);
+        List<Order> orders = orderService.orderQueryAll();
+        return CommonResult.success(orders);
     }
 
-    /**
-     * 用于测试读取github配置文件属性值
-     */
-    @Value(value = "${env}")
-    private String env;
-
-    @GetMapping("test")
-    public String test(){
-        return env;
+    @GetMapping(value = "testFeign")
+    public CommonResult<String> testFeign(){
+        String str = testFeignService.testFeign();
+        return CommonResult.success(str);
     }
+
+
 
 
 }

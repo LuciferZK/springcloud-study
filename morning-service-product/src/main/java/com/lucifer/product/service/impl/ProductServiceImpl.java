@@ -1,8 +1,9 @@
-package com.lucifer.morningserviceproduct.service.impl;
+package com.lucifer.product.service.impl;
 
-import com.lucifer.morningserviceproduct.dao.ProductMapper;
-import com.lucifer.morningserviceproduct.pojo.Product;
-import com.lucifer.morningserviceproduct.service.ProductService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.lucifer.product.dao.ProductMapper;
+import com.lucifer.product.pojo.Product;
+import com.lucifer.product.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> productQueryAll() {
-        return productMapper.findAll();
+        QueryWrapper<Product> queryWrapper = new QueryWrapper<>();
+        return productMapper.selectList(queryWrapper);
     }
 }

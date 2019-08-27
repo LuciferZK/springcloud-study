@@ -5,7 +5,17 @@ spring:
     config:
       uri: http://localhost:8765
       profile: dev
-
-
+    stream:
+      bindings:
+        myMessage:
+          group: order
+          content-type: application/json
+  zipkin:
+    base-url: http://192.168.47.131:9411/
+    sender:
+      type: web
+    sleuth:
+      sampler:
+        probability: 1
 
 

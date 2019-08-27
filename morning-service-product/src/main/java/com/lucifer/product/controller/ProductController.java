@@ -1,8 +1,8 @@
-package com.lucifer.morningserviceproduct.controller;
+package com.lucifer.product.controller;
 
 import com.lucifer.common.utils.CommonResult;
-import com.lucifer.morningserviceproduct.pojo.Product;
-import com.lucifer.morningserviceproduct.service.ProductService;
+import com.lucifer.product.pojo.Product;
+import com.lucifer.product.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

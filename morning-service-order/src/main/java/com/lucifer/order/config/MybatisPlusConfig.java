@@ -2,10 +2,8 @@ package com.lucifer.order.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /**
  * @author: lucifer
@@ -24,9 +22,8 @@ public class MybatisPlusConfig {
      * 设置 dev test 环境开启
      */
     @Bean
-   // @Profile(value = {"dev", "local"})
-    public PerformanceInterceptor performanceInterceptor()
-    {
+    // @Profile(value = {"dev", "local"})
+    public PerformanceInterceptor performanceInterceptor() {
         System.out.println();
         return new PerformanceInterceptor();
     }
