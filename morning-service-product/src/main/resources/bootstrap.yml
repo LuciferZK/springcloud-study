@@ -1,9 +1,7 @@
 spring:
   application:
-    name: morning-service-order
+    name: morning-service-product
   cloud:
     config:
       uri: http://localhost:8765
       profile: dev
-
-
