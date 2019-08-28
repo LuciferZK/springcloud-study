@@ -1,6 +1,5 @@
 package com.lucifer.order.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lucifer.order.dao.OrderMapper;
 import com.lucifer.order.pojo.Order;
 import com.lucifer.order.service.OrderService;
@@ -24,7 +23,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> orderQueryAll() {
-        QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
-        return orderMapper.selectList(queryWrapper);
+        return orderMapper.selectAll();
     }
 }

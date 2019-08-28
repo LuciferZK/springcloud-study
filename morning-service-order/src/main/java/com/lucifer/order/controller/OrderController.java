@@ -4,8 +4,6 @@ import com.lucifer.common.utils.CommonResult;
 import com.lucifer.order.pojo.Order;
 import com.lucifer.order.service.OrderService;
 import com.lucifer.order.service.TestFeignService;
-import com.lucifer.product.pojo.Product;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,17 +39,5 @@ public class OrderController {
         String str = testFeignService.testFeign();
         return CommonResult.success(str);
     }
-
-    /**
-     * 用于测试读取github配置文件属性值
-     */
-    @Value(value = "${env}")
-    private String env;
-
-    @GetMapping("test")
-    public String test(){
-        return env;
-    }
-
 
 }
