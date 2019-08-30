@@ -1,16 +1,18 @@
-package com.lucifer.order.util.excel;
+package com.lucifer.demo.util.excel;
 
 
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
-import com.esotericsoftware.minlog.Log;
-import com.lucifer.order.pojo.Order;
+import com.lucifer.demo.pojo.Order;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -18,6 +20,7 @@ import java.util.List;
  * @date: 2019/8/28
  * @description: 导入Excel工具类
  */
+@Slf4j
 public class ImportExcelUtils {
 
 
@@ -31,7 +34,7 @@ public class ImportExcelUtils {
         MultipartFile requestFile = multipartRequest.getFile("file");
         String originalFilename = requestFile.getOriginalFilename();
         if (!originalFilename.endsWith(ExcelTypeEnum.XLS.getValue()) && !originalFilename.endsWith(ExcelTypeEnum.XLSX.getValue())) {
-            Log.error("Excel导入错误文件名称：{}", originalFilename);
+            log.error("Excel导入错误文件名称：{}", originalFilename);
             throw new RuntimeException("不是Excel格式文件");
         }
         InputStream inputStream = null;
