@@ -5,6 +5,7 @@ import com.lucifer.demo.pojo.Order;
 import com.lucifer.demo.service.OrderService;
 import com.lucifer.demo.util.excel.ExportExcelUtils;
 import com.lucifer.demo.util.excel.ImportExcelUtils;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ import java.util.List;
  * @date: 2019/8/28
  * @description:
  */
+@RefreshScope
 @RestController
 public class TestController {
 

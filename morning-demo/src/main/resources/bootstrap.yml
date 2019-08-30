@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: morning-demo
+  cloud:
+    config:
+      uri: http://localhost:8765
+      profile: dev
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 192.168.47.131
+    port: 5672
+    username: guest
+    password: guest
+
+
+
+
