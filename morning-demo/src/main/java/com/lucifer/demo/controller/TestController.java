@@ -1,13 +1,16 @@
 package com.lucifer.demo.controller;
 
 import com.lucifer.common.utils.CommonResult;
+import com.lucifer.demo.aspect.NoRepeatSubmit;
 import com.lucifer.demo.pojo.Order;
+import com.lucifer.demo.pojo.Order2;
 import com.lucifer.demo.service.OrderService;
 import com.lucifer.demo.util.excel.ExportExcelUtils;
 import com.lucifer.demo.util.excel.ImportExcelUtils;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -39,6 +42,21 @@ public class TestController {
         ExportExcelUtils.writeV2007(orders, Order.class);
         return CommonResult.success(null);
     }
+
+    @NoRepeatSubmit
+    @GetMapping(value = "selectOrders")
+    public CommonResult<List<Order>> selectOrders(){
+        List<Order> orders = orderService.orderQueryAll();
+        return CommonResult.success(orders);
+    }
+
+    @PostMapping("insertOrder")
+    public CommonResult<Integer> insertOrder(@RequestBody Order2 order){
+        Integer id=orderService.insertOrder(order);
+        return CommonResult.success(id);
+    }
+
+
 
 
 }

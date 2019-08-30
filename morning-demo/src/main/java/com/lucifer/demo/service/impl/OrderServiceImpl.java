@@ -2,6 +2,7 @@ package com.lucifer.demo.service.impl;
 
 import com.lucifer.demo.dao.OrderMapper;
 import com.lucifer.demo.pojo.Order;
+import com.lucifer.demo.pojo.Order2;
 import com.lucifer.demo.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> orderQueryAll() {
         return orderMapper.selectAll();
+    }
+
+    @Override
+    public Integer insertOrder(Order2 order) {
+        return orderMapper.insert(order);
     }
 }
