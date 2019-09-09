@@ -23,7 +23,7 @@ public class ParamsFilterConfig  {
         registration.setDispatcherTypes(DispatcherType.REQUEST);
         registration.setFilter(new ParamsFilter());
         registration.addUrlPatterns("/*");
-        registration.setName("paramsFilter");
+        registration.setName("ParamsFilter");
         registration.setOrder(Integer.MAX_VALUE-1);
         return registration;
     }

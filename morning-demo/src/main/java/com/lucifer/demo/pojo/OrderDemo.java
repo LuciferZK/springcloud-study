@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @TableName(value = "order_master")
-public class Order2  {
+public class OrderDemo  {
 
     @TableField(value = "order_id")
     private String orderId;
