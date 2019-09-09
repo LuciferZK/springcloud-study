@@ -2,9 +2,12 @@ package com.lucifer.demo.util.excel;
 
 
 import com.alibaba.excel.EasyExcelFactory;
+import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.lucifer.demo.pojo.Order;
+import com.lucifer.demo.service.OrderService;
+import com.lucifer.demo.service.impl.OrderServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -13,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+
 
 /**
  * @author: lucifer
@@ -29,7 +32,7 @@ public class ImportExcelUtils {
      *
      * @throws IOException 简单抛出异常，真实环境需要catch异常,同时在finally中关闭流
      */
-    public static List<Object> saxReadListStringV2007(HttpServletRequest request) throws IOException {
+    public static void saxReadListStringV2007(HttpServletRequest request, OrderServiceImpl orderServiceImpl) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile requestFile = multipartRequest.getFile("file");
         String originalFilename = requestFile.getOriginalFilename();
@@ -41,12 +44,11 @@ public class ImportExcelUtils {
         try {
             inputStream = requestFile.getInputStream();
             if (inputStream == null) {
-                return null;
+                return;
             }
             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-            ExcelListener excelListener = new ExcelListener();
+            AnalysisEventListener excelListener = new ExcelListener(orderServiceImpl);
             EasyExcelFactory.readBySax(bufferedInputStream, new Sheet(1, 1, Order.class), excelListener);
-            return excelListener.getDatas();
         } finally {
             inputStream.close();
         }

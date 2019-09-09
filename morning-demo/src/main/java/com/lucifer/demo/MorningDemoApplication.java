@@ -9,7 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author Lucifer
  */
 @EnableDiscoveryClient
-@MapperScan(basePackages = "com.lucifer.demo.dao")
+@MapperScan(basePackages = "com.lucifer.demo.dao*")
 @SpringBootApplication
 public class MorningDemoApplication {
 

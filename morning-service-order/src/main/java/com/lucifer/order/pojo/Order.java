@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -34,7 +35,7 @@ public class Order {
     private String buyerOpenid;
 
     @TableField(value = "order_amount")
-    private String orderAmount;
+    private BigDecimal orderAmount;
 
     @TableField(value = "order_status")
     private String orderStatus;

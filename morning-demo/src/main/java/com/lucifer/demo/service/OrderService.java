@@ -1,7 +1,7 @@
 package com.lucifer.demo.service;
 
 import com.lucifer.demo.pojo.Order;
-import com.lucifer.demo.pojo.Order2;
+import com.lucifer.demo.pojo.OrderDemo;
 
 import java.util.List;
 
@@ -24,5 +24,6 @@ public interface OrderService {
      * @param order
      * @return
      */
-    Integer insertOrder(Order2 order);
+    Integer insertOrder(OrderDemo order);
+
 }

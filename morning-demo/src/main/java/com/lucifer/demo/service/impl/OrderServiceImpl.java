@@ -1,8 +1,9 @@
 package com.lucifer.demo.service.impl;
 
-import com.lucifer.demo.dao.OrderMapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lucifer.demo.dao.OrderDemoMapper;
 import com.lucifer.demo.pojo.Order;
-import com.lucifer.demo.pojo.Order2;
+import com.lucifer.demo.pojo.OrderDemo;
 import com.lucifer.demo.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,19 +20,20 @@ import java.util.List;
 @Slf4j
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl extends ServiceImpl<OrderDemoMapper,OrderDemo> implements OrderService {
 
     @Resource
-    private OrderMapper orderMapper;
+    private OrderDemoMapper OrderDemoMapper;
 
 
     @Override
     public List<Order> orderQueryAll() {
-        return orderMapper.selectAll();
+        return OrderDemoMapper.selectAll();
     }
 
     @Override
-    public Integer insertOrder(Order2 order) {
-        return orderMapper.insert(order);
+    public Integer insertOrder(OrderDemo order) {
+        return OrderDemoMapper.insert(order);
     }
+
 }
