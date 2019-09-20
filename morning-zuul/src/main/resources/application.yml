@@ -16,6 +16,10 @@ zuul:
       path: /product/**
       serviceId: morning-service-product
 
+feign:
+  httpclient:
+    enabled: true
+
 
 logging:
   level:
